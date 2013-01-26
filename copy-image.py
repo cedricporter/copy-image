@@ -24,7 +24,10 @@ def filesize_filter(filename):
     except: pass
     size = os.path.getsize(filename)
     if size < MIN_SIZE:
-        shutil.move(filename, trash)
+        try:
+            shutil.move(filename, trash)
+        except:
+            pass
 
 
 def filter():
