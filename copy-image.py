@@ -38,16 +38,12 @@ def main():
             if file.endswith('.jpg'):
                 prefix = root[:root.find('-')]  # take the part before '-'
                 fullname = os.path.join(root, file)
-                print fullname
                 outfilename = output_dir + os.sep + prefix + file
-                print outfilename
                 outfilename = os.path.normpath(outfilename)
-                print outfilename
-                print '-' * 30
-
                 shutil.copy(fullname, outfilename)
+                print 'copy', fullname
             else:
-                print file
+                print '[warning]: skip', file
 
 
 if __name__ == '__main__':
