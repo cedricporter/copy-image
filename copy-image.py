@@ -41,7 +41,7 @@ def main():
                 outfilename = output_dir + os.sep + prefix + file
                 outfilename = os.path.normpath(outfilename)
                 shutil.copy(fullname, outfilename)
-                print 'copy', fullname
+                print '[info]: copy', fullname
             else:
                 print '[warning]: skip', file
 
