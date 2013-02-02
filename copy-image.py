@@ -79,7 +79,7 @@ def main():
             continue
         for file in files:
             if file.endswith('.jpg'):
-                prefix = root[:root.find('-')] if root.find("-") != -1 else ""  # take the part before '-'
+                prefix = root[:(root.find('-') if root.find('-') == -1 else len(root))]  # take the part before '-'
                 fullname = os.path.join(root, file)
                 outfilename = output_dir + os.sep + prefix + file
                 outfilename = os.path.normpath(outfilename)
