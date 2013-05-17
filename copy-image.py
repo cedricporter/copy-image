@@ -11,7 +11,7 @@ from collections import defaultdict
 dir = '.'
 output_dir = 'output'
 trash_dir = '/tmp/image-trash'
-MIN_SIZE = 30000                # 30KB
+MIN_SIZE = 30 * 1024                # 30KB
 
 
 def prepare():
@@ -83,8 +83,11 @@ def main():
                 fullname = os.path.join(root, file)
                 outfilename = output_dir + os.sep + prefix + file
                 outfilename = os.path.normpath(outfilename)
-                shutil.copy(fullname, outfilename)
-                print '[info]: copy', fullname, ", outfilename:", outfilename
+                try:
+                    shutil.copy(fullname, outfilename)
+                    print '[info]: copy', fullname, ", outfilename:", outfilename
+                except Exception, e:
+                    print '[error]:', e
             else:
                 print '[warning]: skip', file
 
